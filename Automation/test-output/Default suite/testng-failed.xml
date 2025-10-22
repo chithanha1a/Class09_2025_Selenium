@@ -5,7 +5,7 @@
     <classes>
       <class name="automation.testsuite.Day8_Locator">
         <methods>
-          <include name="getElementById"/>
+          <include name="getElementByClass"/>
         </methods>
       </class> <!-- automation.testsuite.Day8_Locator -->
     </classes>
