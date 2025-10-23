@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-22T21:23:40 ICT" name="Default suite" finished-at="2025-10-22T21:23:55 ICT" duration-ms="14638">
+  <suite started-at="2025-10-23T20:26:00 ICT" name="Default suite" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4417">
     <groups>
     </groups>
-    <test started-at="2025-10-22T21:23:40 ICT" name="Default test" finished-at="2025-10-22T21:23:55 ICT" duration-ms="14638">
-      <class name="automation.testsuite.Day8_Locator">
-        <test-method signature="getElementByClass()[pri:0, instance:automation.testsuite.Day8_Locator@4135c3b]" started-at="2025-10-22T21:23:41 ICT" name="getElementByClass" finished-at="2025-10-22T21:23:55 ICT" duration-ms="14492" status="PASS">
+    <test started-at="2025-10-23T20:26:00 ICT" name="Default test" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4417">
+      <class name="automation.testsuite.practiceXpathDay8">
+        <test-method signature="getElementById()[pri:0, instance:automation.testsuite.practiceXpathDay8@4135c3b]" started-at="2025-10-23T20:26:00 ICT" name="getElementById" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4315" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getElementByClass -->
-      </class> <!-- automation.testsuite.Day8_Locator -->
+        </test-method> <!-- getElementById -->
+      </class> <!-- automation.testsuite.practiceXpathDay8 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
