@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-23T20:26:00 ICT" name="Default suite" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4417">
+  <suite started-at="2025-11-10T20:46:59 ICT" name="Default suite" finished-at="2025-11-10T20:47:03 ICT" duration-ms="3866">
     <groups>
     </groups>
-    <test started-at="2025-10-23T20:26:00 ICT" name="Default test" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4417">
-      <class name="automation.testsuite.practiceXpathDay8">
-        <test-method signature="getElementById()[pri:0, instance:automation.testsuite.practiceXpathDay8@4135c3b]" started-at="2025-10-23T20:26:00 ICT" name="getElementById" finished-at="2025-10-23T20:26:04 ICT" duration-ms="4315" status="PASS">
+    <test started-at="2025-11-10T20:46:59 ICT" name="Default test" finished-at="2025-11-10T20:47:03 ICT" duration-ms="3866">
+      <class name="automation.testsuite.Day12_Bai2">
+        <test-method signature="ageRadio()[pri:0, instance:automation.testsuite.Day12_Bai2@31304f14]" started-at="2025-11-10T20:47:00 ICT" name="ageRadio" finished-at="2025-11-10T20:47:03 ICT" duration-ms="3766" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getElementById -->
-      </class> <!-- automation.testsuite.practiceXpathDay8 -->
+        </test-method> <!-- ageRadio -->
+      </class> <!-- automation.testsuite.Day12_Bai2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

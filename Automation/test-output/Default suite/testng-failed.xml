@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation.testsuite.practiceXpathDay8">
+      <class name="automation.testsuite.Day12_Bai2">
         <methods>
-          <include name="getElementById"/>
+          <include name="ageRadio"/>
         </methods>
-      </class> <!-- automation.testsuite.practiceXpathDay8 -->
+      </class> <!-- automation.testsuite.Day12_Bai2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
