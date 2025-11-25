@@ -44,10 +44,6 @@ public class LoginPage {
 	        txtPass.sendKeys(pass);
 	    }
 
-	    /*WebElement btnSubmit = driver.findElement(By.name("signin"));
-	    if (btnSubmit.isDisplayed()) {
-	        btnSubmit.click();
-	    }*/
 	    driver.findElement(By.name("signin")).click();
 	    // accept alert	    
 	    driver.switchTo().alert().accept();

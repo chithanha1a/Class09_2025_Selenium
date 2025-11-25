@@ -67,12 +67,6 @@ public class LoginTest extends CommonBase {
 		 loginPage =  new LoginPage(driver);
 		 loginPage.loginFail("admi3n@gmail.com","12345836738");
 		 
-		 //WebElement textQuanLyND=driver.findElement(By.xpath("//h4[text()='Đăng nhập']"));
-		 //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		 //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		
-		 //login.loginFail_INcorrectPassword("admin@gmail.com","1234536738");	
-		 
 		 WebElement textQuanLyND=driver.findElement(By.xpath("//h4[text()='Đăng nhập']"));
 		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		 assertTrue(textQuanLyND.isDisplayed(),"Error User and pass");

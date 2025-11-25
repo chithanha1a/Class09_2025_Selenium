@@ -10,4 +10,5 @@ public class CT_PageURL {
 	public static String GLOBAL_URL="https://www.globalsqa.com/demo-site/select-dropdown-menu/";
 	public static String SELENIUM_URL="https://automationfc.github.io/basic-form/index.html";
 	public static String CRMSTAR_URL="https://test-system.crmstar.vn/";
+	public static String VIBLO_URL="https://accounts.viblo.asia/login?";
 }
