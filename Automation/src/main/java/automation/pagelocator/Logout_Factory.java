@@ -13,10 +13,10 @@ public class Logout_Factory {
 	@FindBy(xpath="//button[text()='Đăng xuất' and @type='button']") WebElement btnDangXuat;
 	@FindBy(xpath="//button[text()='Đăng xuất' and @type='submit']") WebElement btnConfirmDangXuat;
 
-	public Logout_Factory(WebDriver driver) {
+	public Logout_Factory(WebDriver _driver) {
 		
-		this.driver = driver;
-		PageFactory.initElements(driver, this);
+		this.driver = _driver;
+		PageFactory.initElements(_driver, this);
 	}
 	
 	public void LogoutFunction()

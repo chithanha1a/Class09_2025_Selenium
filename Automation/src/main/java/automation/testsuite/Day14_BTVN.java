@@ -20,7 +20,7 @@ public class Day14_BTVN extends CommonBase {
 	public void LoginAccountSuccessFully()
 	{
 		Login_Viblo login = new Login_Viblo(driver);
-		login.CreateAccount("HPhuc", "huuphuc310511@gmail.com", "huuphuc310511", "Micky@4473");
+		//login.CreateAccount("HPhuc", "huuphuc310511@gmail.com", "huuphuc310511", "Micky@4473");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		login.LoginFunction("huuphuc310511@gmail.com", "Micky@4473");
 		

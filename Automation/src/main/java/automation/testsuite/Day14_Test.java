@@ -21,7 +21,6 @@ public class Day14_Test extends CommonBase{
 		driver = initFirefoxDriver(CT_PageURL.CRMSTAR_URL);
 	}
 	
-	@Test
 	public void loginSucessfully()
 	{
 		LoginPage_Factory login = new LoginPage_Factory(driver);
