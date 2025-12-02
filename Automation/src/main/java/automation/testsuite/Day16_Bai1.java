@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import automation.common.CommonBase;
 import automation.constant.CT_PageURL;
 
-public class Bai16_Bai1 extends CommonBase{
+public class Day16_Bai1 extends CommonBase{
 	@BeforeMethod
 	public void openWebPage()
 	{
