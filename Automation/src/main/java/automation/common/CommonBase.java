@@ -3,15 +3,29 @@ package automation.common;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 //import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CommonBase {
 	public static WebDriver driver;
+	Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout( Duration.ofSeconds(30))
+	        //.withTimeout(Duration.ofSeconds(30)) // Maximum time to wait
+	        .pollingEvery(Duration.ofMillis(500)) // Interval between each poll
+	        .ignoring(NoSuchElementException.class); // Exceptions to ignore
 	public static WebDriver initWebDriver(String URL)	
 	{
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
@@ -23,18 +37,12 @@ public class CommonBase {
 		return driver;
 	}
 	
-	public void closeDriver()
-	{
-		if(driver!=null)
-		{
-			driver.close();
-		}
-	}
 	public static WebDriver initFirefoxDriver(String URL) {
 		System.setProperty("webdriver.firefox.driver", System.getProperty("user.dir") + "\\driver\\geckodriver.exe");
 		FirefoxDriver driver = new FirefoxDriver();
 		driver.get(URL);
 		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
 		return driver;
 	}
 	
@@ -49,6 +57,102 @@ public class CommonBase {
 		ChromeDriver driver = new ChromeDriver();
 		driver.get(URL);
 		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
 		return driver;
 	}
+	
+	// 1. Explicit wait
+		public WebElement findElement_Ex(By locator) {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			return driver.findElement(locator);
+		}
+
+		// 2. Fluent wait
+		public WebElement findElement_fluent(By locator) {
+			Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10)) // Maximum time to wait
+					.pollingEvery(Duration.ofMillis(200)) // Interval between each poll
+					.ignoring(NoSuchElementException.class);
+			// Exceptions to ignore
+			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			return driver.findElement(locator);
+		}
+
+		// Wrap click method
+		public void click(By locator) {
+			WebElement element = findElement_fluent(locator);
+			Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(15)) // Maximum time to wait
+					.pollingEvery(Duration.ofMillis(200)) // Interval between each poll
+					.ignoring(NoSuchElementException.class);
+			wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(locator));
+			element.click();
+		}
+		
+		public void click2(By locator) {
+		    Wait<WebDriver> wait = new FluentWait<>(driver)
+		        .withTimeout(Duration.ofSeconds(15))
+		        .pollingEvery(Duration.ofMillis(200))
+		        .ignoring(NoSuchElementException.class)
+		        .ignoring(StaleElementReferenceException.class);
+
+		    WebElement element = wait.until(driver -> driver.findElement(locator));
+		    wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+		}
+		
+		public void clicks(By locator) {
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+		    // Chờ xuất hiện trong DOM
+		    WebElement element = wait.until(
+		        ExpectedConditions.presenceOfElementLocated(locator)
+		    );
+
+		    // Scroll vào giữa màn hình
+		    ((JavascriptExecutor) driver).executeScript(
+		        "arguments[0].scrollIntoView({block:'center'});", element
+		    );
+
+		    // Chờ clickable
+		    try {
+		        wait.until(ExpectedConditions.elementToBeClickable(locator));
+		        element.click();
+		    } catch (Exception e) {
+		        // Fallback dùng JavaScript click
+		        ((JavascriptExecutor) driver)
+		            .executeScript("arguments[0].click();", element);
+		    }
+		}
+
+
+
+		// Wrap sendKeys method
+		public void type(By locator, String value) {
+			WebElement element = findElement_fluent(locator);
+			element.clear();
+			element.sendKeys(value);
+		}
+
+		// Click by javascript
+		public void clickByJS(By locator) {
+			WebElement element = findElement_fluent(locator);
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", element);
+		}
+
+		public boolean isDisplay_fluent(By locator) {
+			try {
+				WebElement element = findElement_fluent(locator);
+				return element.isDisplayed(); // true
+			} catch (NoSuchElementException ex1) {
+				return false; // mean element is not Display, error in findElement_fluent
+			} catch (Exception ex) {
+				return false;
+			}
+		}
+
+		public void closeDriver() {
+			if (driver != null)
+				driver.close();
+		}
 }
