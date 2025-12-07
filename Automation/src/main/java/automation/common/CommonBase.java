@@ -14,6 +14,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -44,6 +46,29 @@ public class CommonBase {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
 		return driver;
+	}
+	
+	public WebDriver initFirefoxDrivers(String URL) {
+	    FirefoxOptions options = new FirefoxOptions();
+	    FirefoxProfile profile = new FirefoxProfile();
+	    
+	    // Tắt tracking protection và cookie warnings
+	    profile.setPreference("privacy.trackingprotection.enabled", false);
+	    profile.setPreference("privacy.trackingprotection.pbmode.enabled", false);
+	    profile.setPreference("network.cookie.cookieBehavior", 0);
+	    profile.setPreference("network.cookie.lifetimePolicy", 0);
+	    profile.setPreference("dom.webnotifications.enabled", false);
+	    profile.setPreference("dom.push.enabled", false);
+	    
+	    options.setProfile(profile);
+	    
+	    WebDriver driver = new FirefoxDriver(options);
+	    driver.manage().window().maximize();
+	    driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+	    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	    driver.get(URL);
+	    
+	    return driver;
 	}
 	
 	public WebDriver initChromeDriver(String URL) {
@@ -149,6 +174,13 @@ public class CommonBase {
 			} catch (Exception ex) {
 				return false;
 			}
+		}
+		//Scroll to element
+		public void scrollToElement (By locator)
+		{
+			WebElement element = findElement_fluent(locator);
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
 		}
 
 		public void closeDriver() {

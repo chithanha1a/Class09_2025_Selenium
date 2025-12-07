@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-02T21:03:28 ICT" name="Default suite" finished-at="2025-12-02T21:03:45 ICT" duration-ms="17489">
+  <suite started-at="2025-12-07T09:58:36 ICT" name="Default suite" finished-at="2025-12-07T09:58:50 ICT" duration-ms="14020">
     <groups>
     </groups>
-    <test started-at="2025-12-02T21:03:28 ICT" name="Default test" finished-at="2025-12-02T21:03:45 ICT" duration-ms="17489">
-      <class name="automation.testsuite.Bai16_Bai1">
-        <test-method is-config="true" signature="openWebPage()[pri:0, instance:automation.testsuite.Bai16_Bai1@62379589]" started-at="2025-12-02T21:03:28 ICT" name="openWebPage" finished-at="2025-12-02T21:03:36 ICT" duration-ms="8094" status="PASS">
+    <test started-at="2025-12-07T09:58:36 ICT" name="Default test" finished-at="2025-12-07T09:58:50 ICT" duration-ms="14020">
+      <class name="automation.testsuite.Day17_BTVN">
+        <test-method is-config="true" signature="openWebPage()[pri:0, instance:automation.testsuite.Day17_BTVN@175c2241]" started-at="2025-12-07T09:58:36 ICT" name="openWebPage" finished-at="2025-12-07T09:58:46 ICT" duration-ms="9603" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openWebPage -->
-        <test-method signature="loginSucessful()[pri:0, instance:automation.testsuite.Bai16_Bai1@62379589]" started-at="2025-12-02T21:03:36 ICT" name="loginSucessful" finished-at="2025-12-02T21:03:45 ICT" duration-ms="9198" status="PASS">
+        <test-method signature="chatZalo_Successfully()[pri:0, instance:automation.testsuite.Day17_BTVN@175c2241]" started-at="2025-12-07T09:58:46 ICT" name="chatZalo_Successfully" finished-at="2025-12-07T09:58:50 ICT" duration-ms="4336" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginSucessful -->
-      </class> <!-- automation.testsuite.Bai16_Bai1 -->
+        </test-method> <!-- chatZalo_Successfully -->
+      </class> <!-- automation.testsuite.Day17_BTVN -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
