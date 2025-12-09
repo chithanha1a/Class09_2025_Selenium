@@ -16,7 +16,7 @@ public class Day18_BTVN02 extends CommonBase {
     @Parameters("browser")
     public void openWebPage(@Optional("firefox") String browserSetup) {
         setupDriver(browserSetup);
-        driver.get(CT_PageURL.MEADIAMART_URL);
+        driver.get(CT_PageURL.BEPANTOAN_URL);
     }
 
     @Test
@@ -28,7 +28,7 @@ public class Day18_BTVN02 extends CommonBase {
         scrollToElement(titleDanhMuc);
 
  
-        click(chatBtn);
+        clicks(chatBtn);
     }
 
     @AfterMethod

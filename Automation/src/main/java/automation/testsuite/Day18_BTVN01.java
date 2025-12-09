@@ -16,13 +16,13 @@ public class Day18_BTVN01 extends CommonBase {
     @Parameters("browser")
     public void openWebPage(@Optional("firefox") String browserSetup) {
         setupDriver(browserSetup);
-        driver.get(CT_PageURL.MEADIAMART_URL);
+        driver.get(CT_PageURL.DMNKGR_URL);
     }
 
     @Test
     public void clickZalo() {
         
-        click(By.xpath("//img[@alt='Zalo']"));
+        clicks(By.xpath("//img[@alt='Zalo']"));
     }
 
     @AfterMethod

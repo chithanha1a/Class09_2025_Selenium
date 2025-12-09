@@ -38,7 +38,7 @@ public class Day17_BTVN extends CommonBase{
 		System.out.println("Số Lượng iframe la: "+size);
 		
 		driver.switchTo().frame(findElement_fluent(By.xpath("//ifram[contains(@src,'page.widget.zalo.me')]")));
-		click(By.xpath("//div[@class='za-chat__head-box']"));
+		clicks(By.xpath("//div[@class='za-chat__head-box']"));
 		assertTrue(isDisplay_fluent(By.xpath("//p[text()='Siêu thị điện máy MediaMart']")));
 		
 	}
@@ -63,7 +63,7 @@ public class Day17_BTVN extends CommonBase{
 		    js.executeScript("arguments[0].click();", closeButton);
 		    
 		    driver.switchTo().frame(findElement_fluent(By.xpath("//ifram[contains(@src,'page.widget.zalo.me')]")));
-			click(By.xpath("//div[@class='za-chat__head-box']"));
+			clicks(By.xpath("//div[@class='za-chat__head-box']"));
 			assertTrue(isDisplay_fluent(By.xpath("//p[text()='Siêu thị điện máy MediaMart']")));
 		    
 		}catch (Exception e)
@@ -98,7 +98,7 @@ public class Day17_BTVN extends CommonBase{
 	    );
 
 	    driver.switchTo().frame(findElement_fluent(By.xpath("//iframe[contains(@src,'page.widget.zalo.me')]")));
-	    click(By.xpath("//div[@class='za-chat__head-box']"));
+	    clicks(By.xpath("//div[@class='za-chat__head-box']"));
 	    assertTrue(isDisplay_fluent(By.xpath("//p[text()='Siêu thị điện máy MediaMart']")));
 	}
 
