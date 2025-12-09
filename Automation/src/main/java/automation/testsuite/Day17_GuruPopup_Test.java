@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import automation.common.CommonBase;
@@ -16,10 +17,12 @@ import automation.pagelocator.Day17_GuruPopup;
 public class Day17_GuruPopup_Test extends CommonBase {
 	
 	@BeforeMethod
-	public void openWebPage()
+	@Parameters("browser")
+	public void openWebPage(String browserSetup)
 	{
-		driver=initFirefoxDriver(CT_PageURL.GURUPOPUP_URL);
-		
+		//driver=initFirefoxDriver(CT_PageURL.GURUPOPUP_URL);
+		setupDriver(browserSetup);
+		driver.get(CT_PageURL.CODESTART2_URL);
 	}
 	@Test
 	public void getDetailAccess_Successfully()

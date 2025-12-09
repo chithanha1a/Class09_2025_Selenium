@@ -19,4 +19,5 @@ public class CT_PageURL {
 	public static String DEMOALERT_URL="https://demo.automationtesting.in/Alerts.html";
 	public static String CODESTART2_URL="https://codestar.vn";
 	public static String MEADIAMART_URL="https://mediamart.vn/";
+	public static String DMNKGR_URL="https://dienmaynhapkhaugiare.com.vn";
 }

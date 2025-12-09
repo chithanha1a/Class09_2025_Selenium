@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [Parallel Browser Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="2" parallel="tests" name="Run on Firefox(failed)">
+<suite name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Test Day18_BTVN01 and Day18_BTVN02 on firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
       <class name="automation.testsuite.Day18_BTVN01">
         <methods>
           <include name="openWebPage"/>
           <include name="clickZalo"/>
-          <include name="closeBrowser"/>
         </methods>
       </class> <!-- automation.testsuite.Day18_BTVN01 -->
       <class name="automation.testsuite.Day18_BTVN02">
         <methods>
           <include name="openWebPage"/>
           <include name="clickChat"/>
-          <include name="closeBrowser"/>
         </methods>
       </class> <!-- automation.testsuite.Day18_BTVN02 -->
     </classes>
-  </test> <!-- Run on Firefox(failed) -->
-  <test thread-count="2" parallel="tests" name="Run on Chrome(failed)">
+  </test> <!-- Test Day18_BTVN01 and Day18_BTVN02 on firefox(failed) -->
+  <test thread-count="5" name="Test Day18_BTVN01 and Day18_BTVN02 on chrome(failed)">
     <parameter name="browser" value="chrome"/>
     <classes>
       <class name="automation.testsuite.Day18_BTVN01">
         <methods>
           <include name="openWebPage"/>
           <include name="clickZalo"/>
-          <include name="closeBrowser"/>
         </methods>
       </class> <!-- automation.testsuite.Day18_BTVN01 -->
       <class name="automation.testsuite.Day18_BTVN02">
         <methods>
           <include name="openWebPage"/>
           <include name="clickChat"/>
-          <include name="closeBrowser"/>
         </methods>
       </class> <!-- automation.testsuite.Day18_BTVN02 -->
     </classes>
-  </test> <!-- Run on Chrome(failed) -->
-</suite> <!-- Failed suite [Parallel Browser Suite] -->
+  </test> <!-- Test Day18_BTVN01 and Day18_BTVN02 on chrome(failed) -->
+</suite> <!-- Failed suite [TestSuite] -->

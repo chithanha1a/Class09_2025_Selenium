@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Parallel Browser Suite" parallel="tests" thread-count="2">
+
+    <test name="Run on Firefox">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="automation.testsuite.Day18_BTVN01" />
+            <class name="automation.testsuite.Day18_BTVN02" />
+        </classes>
+    </test>
+
+    <test name="Run on Chrome">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="automation.testsuite.Day18_BTVN01" />
+            <class name="automation.testsuite.Day18_BTVN02" />
+        </classes>
+    </test>
+    
+</suite>

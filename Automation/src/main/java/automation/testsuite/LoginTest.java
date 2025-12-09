@@ -20,14 +20,13 @@ public class LoginTest extends CommonBase {
     private static final By LOGIN_HEADER_LOCATOR = By.xpath("//h4[text()='Đăng nhập']");
     
     private LoginPage loginPage;
-    private WebDriverWait wait;
 	 @BeforeMethod
 	 public void openWebPage()
 	 {
 		 
 		 driver=initFirefoxDriver(CT_PageURL.CRMSTAR_URL);
 		 loginPage = new LoginPage(driver);
-	     wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+	    // wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
 	 }
 	 
 	 @Test(priority = 1, description = "Verify login fails with incorrect username")

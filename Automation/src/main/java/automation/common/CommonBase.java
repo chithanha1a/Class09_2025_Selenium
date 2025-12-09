@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -40,6 +41,10 @@ public class CommonBase {
 	}
 	
 	public static WebDriver initFirefoxDriver(String URL) {
+		FirefoxOptions options = new FirefoxOptions();
+	    FirefoxProfile profile = new FirefoxProfile();
+	    profile.setPreference("network.cookie.cookieBehavior", 0);
+	    options.setProfile(profile);
 		System.setProperty("webdriver.firefox.driver", System.getProperty("user.dir") + "\\driver\\geckodriver.exe");
 		FirefoxDriver driver = new FirefoxDriver();
 		driver.get(URL);
@@ -51,7 +56,7 @@ public class CommonBase {
 	public WebDriver initFirefoxDrivers(String URL) {
 	    FirefoxOptions options = new FirefoxOptions();
 	    FirefoxProfile profile = new FirefoxProfile();
-	    
+	    profile.setPreference("network.cookie.cookieBehavior", 0);
 	    // Tắt tracking protection và cookie warnings
 	    profile.setPreference("privacy.trackingprotection.enabled", false);
 	    profile.setPreference("privacy.trackingprotection.pbmode.enabled", false);
@@ -86,6 +91,23 @@ public class CommonBase {
 		return driver;
 	}
 	
+	
+	public WebDriver initChromeDrivers(String URL) {		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
+		ChromeOptions chromeOptions= new ChromeOptions();
+		chromeOptions.addArguments("--allow-third-party-cookies");
+		
+		Map<String, Object> chromePrefs = new HashMap<>();
+	    chromePrefs.put("credentials_enable_service", false); // Disables the "save password" prompt
+	    chromePrefs.put("profile.password_manager_enabled", false); // Disables the password manager
+	    chromePrefs.put("profile.password_manager_leak_detection", false); // Disables the password leak detection warning
+	    chromeOptions.setExperimentalOption("prefs", chromePrefs);
+		ChromeDriver driver = new ChromeDriver();
+		driver.get(URL);
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+		return driver;
+	}
 	// 1. Explicit wait
 		public WebElement findElement_Ex(By locator) {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -128,17 +150,14 @@ public class CommonBase {
 		public void clicks(By locator) {
 		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-		    // Chờ xuất hiện trong DOM
 		    WebElement element = wait.until(
 		        ExpectedConditions.presenceOfElementLocated(locator)
 		    );
 
-		    // Scroll vào giữa màn hình
 		    ((JavascriptExecutor) driver).executeScript(
 		        "arguments[0].scrollIntoView({block:'center'});", element
 		    );
 
-		    // Chờ clickable
 		    try {
 		        wait.until(ExpectedConditions.elementToBeClickable(locator));
 		        element.click();
@@ -186,5 +205,68 @@ public class CommonBase {
 		public void closeDriver() {
 			if (driver != null)
 				driver.close();
+		}
+		
+		public WebDriver initFirefoxDriver() {
+
+	        System.setProperty("webdriver.firefox.driver",System.getProperty("user.dir") + "\\\\driver\\\\geckodriver.exe");
+	        FirefoxDriver driver = new FirefoxDriver();
+	        driver.manage().window().maximize();
+	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+	        
+	        return driver;
+	    }
+		
+		private WebDriver initChromeDriver() {
+	        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\\\driver\\\\chromedriver.exe");
+	        ChromeOptions chromeOptions = new ChromeOptions();
+	        chromeOptions.addArguments("--allow-third-party-cookies");
+	        Map<String, Object> chromePrefs = new HashMap<>();
+	        chromePrefs.put("credentials_enable_service", false); 
+	        chromePrefs.put("profile.password_manager_enabled", false); 
+	        chromePrefs.put("profile.password_manager_leak_detection", false); 
+	        chromeOptions.setExperimentalOption("prefs", chromePrefs);
+	        
+	        ChromeDriver driver = new ChromeDriver(chromeOptions);
+	        driver.manage().window().maximize();
+	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));
+	        return driver;
+	    }
+		
+		public WebDriver initMSEdgeDriver() {
+
+	        System.setProperty("webdriver.edge.driver",  System.getProperty("user.dir") + "\\\\driver\\\\msedgedriver.exe"); 
+
+	        WebDriver driver = new EdgeDriver(); 
+
+	        driver.manage().window().maximize();
+	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(50));	        
+        
+	        return driver;
+	    }
+		
+		public WebDriver setupDriver(String browserName) {
+	        switch (browserName.trim().toLowerCase()) {
+	            case "chrome":
+	            	//System.out.println("Initialing chorme driver....");
+	                driver = initChromeDriver(); // Gọi hàm initChrome không tham số
+	                break;
+	            case "firefox":
+	            	//System.out.println("Initialing firefox driver....");
+	                driver = initFirefoxDriver(); // Gọi hàm initFirefox không tham số (thiếu trong ảnh gốc)
+	                break;
+	            case "edge":
+	            	//System.out.println("Initialing edge driver....");
+	                driver = initMSEdgeDriver();
+	                break;
+	            default:
+	                System.out.println("Browser: " + browserName + " is invalid, Launching Chrome as browser of choice...");
+	                driver = initChromeDriver();
+	        }
+	        return driver;
+	    }
+		public void quitDriver()
+		{
+			closeDriver();
 		}
 }
